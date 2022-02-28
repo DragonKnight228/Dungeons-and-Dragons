@@ -5,10 +5,12 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/baseline_add_24.xml" value="0.191" />
         <entry key="app/src/main/res/drawable-v24/outline_person_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.286" />
         <entry key="app/src/main/res/layout/activity_character.xml" value="0.5727525486561631" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_character.xml" value="0.2798913043478261" />
         <entry key="app/src/main/res/layout/fragment_characteristics.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_weapon.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.35625" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.35625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.343" />

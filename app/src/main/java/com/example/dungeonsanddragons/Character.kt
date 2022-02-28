@@ -27,8 +27,10 @@ class Character : AppCompatActivity() {
 
         var tabLayout: TabLayout = findViewById(R.id.tablayout)
         tabLayout.setupWithViewPager(pager)
-        tabLayout.getTabAt(0)?.setIcon(R.drawable.outline_person_24)
+        tabLayout.getTabAt(0)?.setIcon(R.drawable.user)
         tabLayout.getTabAt(1)?.setIcon(R.drawable.sword)
+        tabLayout.getTabAt(2)?.setIcon(R.drawable.backpack)
+        tabLayout.getTabAt(3)?.setIcon(R.drawable.magic_wand)
 }
 }
 
@@ -38,7 +40,7 @@ class SectionsPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
     }
 
     override fun getCount(): Int {
-        return 2
+        return 4
     }
 
     override fun getItem(position: Int): Fragment? {
@@ -47,7 +49,13 @@ class SectionsPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
                 return Characteristics()
             }
             1 -> {
+                return Weapon()
+            }
+            2 -> {
                 return Equipment()
+            }
+            3 -> {
+                return Magic()
             }
         }
         return null
