@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.DungeonsAndDragons" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/red_base</item>
+        <item name="colorPrimaryDark">@color/red_base</item>
+        <item name="colorBackgroundFloating">@color/red_base</item>
+        <item name="colorControlHighlight">@color/red_base</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="statusBarBackground">@color/red_base</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="actionMenuTextAppearance">@color/white</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>
