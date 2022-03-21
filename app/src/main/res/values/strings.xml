@@ -5,6 +5,8 @@
     <string name="title_activity_character">Character</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="storage">Хранилище персонажей</string>
+    <string name="your_character">Ваш персонаж</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

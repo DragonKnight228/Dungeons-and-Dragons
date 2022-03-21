@@ -19,13 +19,14 @@ class Character : AppCompatActivity() {
         setContentView(R.layout.activity_character)
 
         val toolbar: android.support.v7.widget.Toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitle(this.getString(R.string.your_character))
         setSupportActionBar(toolbar)
 
-        var pagerAdapter = SectionsPagerAdapter(supportFragmentManager)
-        var pager: ViewPager = findViewById(R.id.pager)
+        val pagerAdapter = SectionsPagerAdapter(supportFragmentManager)
+        val pager: ViewPager = findViewById(R.id.pager)
         pager.adapter = pagerAdapter
 
-        var tabLayout: TabLayout = findViewById(R.id.tablayout)
+        val tabLayout: TabLayout = findViewById(R.id.tablayout)
         tabLayout.setupWithViewPager(pager)
         tabLayout.getTabAt(0)?.setIcon(R.drawable.user)
         tabLayout.getTabAt(1)?.setIcon(R.drawable.sword)

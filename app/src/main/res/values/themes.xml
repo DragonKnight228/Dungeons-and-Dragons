@@ -10,6 +10,7 @@
         <item name="statusBarBackground">@color/red_base</item>
         <item name="actionMenuTextColor">@color/white</item>
         <item name="actionMenuTextAppearance">@color/white</item>
+        <item name="android:textSize">@dimen/font_size</item>
         <!-- Customize your theme here. -->
     </style>
 

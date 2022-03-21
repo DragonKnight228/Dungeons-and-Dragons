@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val toolbar: android.support.v7.widget.Toolbar = findViewById(R.id.toolbar)
+        toolbar.setTitle(this.getString(R.string.storage))
         setSupportActionBar(toolbar)
     }
 
