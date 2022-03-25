@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/full_field_component"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name1"
+            android:layout_width="256dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittext_font" />
+
+        <EditText
+            android:id="@+id/input_text1"
+            android:layout_width="256dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/name1"
+            android:layout_centerHorizontal="true"
+            android:autofillHints=""
+            android:background="@android:color/transparent"
+            android:inputType="text"
+            android:textSize="@dimen/edittext_font"
+            android:gravity="center_horizontal"/>
+
+    </RelativeLayout>
+</layout>
