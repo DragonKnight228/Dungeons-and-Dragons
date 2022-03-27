@@ -3,8 +3,10 @@
     <string name="create_character">Create character</string>
     <string name="character_name">Name</string>
     <string name="title_activity_character">Character</string>
+
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+
     <string name="storage">Хранилище персонажей</string>
     <string name="your_character">Ваш персонаж</string>
     <!-- Strings used for fragments for navigation -->
@@ -12,10 +14,19 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
     <string name="name">Имя</string>
     <string name="race">Раса</string>
     <string name="level">Уровень</string>
     <string name="xp">Опыт</string>
+
+    <string name="KD">КД</string>
+    <string name="HP">Хиты</string>
+    <string name="hp_dice">КХ</string>
+
+    <string name="speed">Скорость</string>
+    <string name="max_hp">Маскимум хитов</string>
+    <string name="initiative">Инициатива</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

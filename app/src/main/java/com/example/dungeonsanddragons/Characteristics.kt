@@ -19,11 +19,30 @@ class Characteristics : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        var binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
+        val binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
         binding.fieldName.name.text = getString(R.string.name)
         binding.fieldLevel.name.text = getString(R.string.level)
         binding.fieldRace.name.text = getString(R.string.race)
         binding.fieldXp.name.text = getString(R.string.xp)
+
+        binding.kdField.fullFieldComponent.setBackgroundResource(R.drawable.shield)
+        binding.kdField.name1.text = getString(R.string.KD)
+
+        binding.hpField.fullFieldComponent.setBackgroundResource(R.drawable.heart)
+        binding.hpField.name1.text = getString(R.string.HP)
+
+        binding.hpDiceField.fullFieldComponent.setBackgroundResource(R.drawable.hexagon)
+        binding.hpDiceField.name1.text = getString(R.string.hp_dice)
+
+        binding.speedField.name1.text = getString(R.string.speed)
+        binding.speedField.name1.textSize = resources.getDimension(R.dimen.alternative_font_size)
+
+        binding.maxHpField.name1.text = getString(R.string.max_hp)
+        binding.maxHpField.name1.textSize = resources.getDimension(R.dimen.alternative_font_size)
+
+        binding.initiativeField.name1.text = getString(R.string.initiative)
+        binding.initiativeField.name1.textSize = resources.getDimension(R.dimen.alternative_font_size)
+
 
         val field_name = view?.findViewById<View>(R.id.linearLayout)
         if (field_name != null) {

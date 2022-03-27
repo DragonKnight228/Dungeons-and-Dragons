@@ -4,77 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-<android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Characteristics">
-
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="350dp"
-        android:layout_height="294dp"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="58dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <include
-            android:id="@+id/field_name"
-            layout="@layout/field_with_textview1" />
-
-        <include
-            android:id="@+id/field_level"
-            layout="@layout/field_with_textview1"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
-
-        <include
-            android:id="@+id/field_race"
-            layout="@layout/field_with_textview1"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
-
-        <include
-            android:id="@+id/field_xp"
-            layout="@layout/field_with_textview1"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="@dimen/activity_horizontal_margin" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <include
-            layout="@layout/field_with_textview2"
-            android:layout_width="138dp"
-            android:layout_height="182dp" />
-
-        <include
-            layout="@layout/field_with_textview2"
-            android:layout_width="138dp"
-            android:layout_height="182dp" />
-
-        <include
-            layout="@layout/field_with_textview2"
-            android:layout_width="135dp"
-            android:layout_height="182dp" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Characteristics">
 
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="350sp"
+            android:layout_height="294sp"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="58dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/field_name"
+                layout="@layout/field_with_textview1" />
+
+            <include
+                android:id="@+id/field_level"
+                layout="@layout/field_with_textview1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
+            <include
+                android:id="@+id/field_race"
+                layout="@layout/field_with_textview1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
+            <include
+                android:id="@+id/field_xp"
+                layout="@layout/field_with_textview1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="145sp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <include
+                android:id="@+id/kd_field"
+                layout="@layout/field_with_textview2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3" />
+
+            <include
+                android:id="@+id/hp_field"
+                layout="@layout/field_with_textview2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3" />
+
+            <include
+                android:id="@+id/hp_dice_field"
+                layout="@layout/field_with_textview2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="0dp"
+            android:layout_height="145sp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <include
+                android:id="@+id/speed_field"
+                layout="@layout/field_with_textview2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3" />
+
+            <include
+                android:id="@+id/max_hp_field"
+                layout="@layout/field_with_textview2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3" />
+
+            <include
+                android:id="@+id/initiative_field"
+                layout="@layout/field_with_textview2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3" />
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
 </layout>
 

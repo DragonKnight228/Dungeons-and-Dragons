@@ -16,21 +16,23 @@
             android:id="@+id/name1"
             android:layout_width="256dp"
             android:layout_height="50dp"
+            android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/black"
-            android:textSize="@dimen/edittext_font" />
+            android:textSize="@dimen/edittext_font"
+            android:gravity="center_horizontal|bottom"/>
 
         <EditText
             android:id="@+id/input_text1"
             android:layout_width="256dp"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_below="@+id/name1"
             android:layout_centerHorizontal="true"
             android:autofillHints=""
             android:background="@android:color/transparent"
             android:inputType="text"
             android:textSize="@dimen/edittext_font"
-            android:gravity="center_horizontal"/>
+            android:gravity="center"/>
 
     </RelativeLayout>
 </layout>
