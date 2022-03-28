@@ -19,7 +19,7 @@
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
             android:textColor="@color/black"
-            android:textSize="@dimen/edittext_font"
+            android:textSize="@dimen/textview_font2"
             android:gravity="center_horizontal|bottom"/>
 
         <EditText

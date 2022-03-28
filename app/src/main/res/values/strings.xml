@@ -15,10 +15,10 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="name">Имя</string>
-    <string name="race">Раса</string>
-    <string name="level">Уровень</string>
-    <string name="xp">Опыт</string>
+    <string name="name">ИМЯ</string>
+    <string name="race">РАСА</string>
+    <string name="level">УРОВЕНЬ</string>
+    <string name="xp">ОПЫТ</string>
 
     <string name="KD">КД</string>
     <string name="HP">Хиты</string>
