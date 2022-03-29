@@ -28,6 +28,13 @@
     <string name="max_hp">Маскимум хитов</string>
     <string name="initiative">Инициатива</string>
 
+    <string name="strength">Сила</string>
+    <string name="dexterity">Ловкость</string>
+    <string name="constitution">Телосложение</string>
+    <string name="intelligence">Интеллект</string>
+    <string name="wisdom">Мудрость</string>
+    <string name="charisma">Харизма</string>
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->

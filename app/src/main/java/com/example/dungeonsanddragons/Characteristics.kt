@@ -43,6 +43,19 @@ class Characteristics : Fragment() {
         binding.initiativeField.name1.text = getString(R.string.initiative)
         binding.initiativeField.name1.textSize = resources.getDimension(R.dimen.alternative_font_size)
 
+        binding.strengthField.nameForCharacteristic.text = getString(R.string.strength)
+
+        binding.dexterityField.nameForCharacteristic.text = getString(R.string.dexterity)
+
+        binding.constitutionField.nameForCharacteristic.text = getString(R.string.constitution)
+        binding.constitutionField.nameForCharacteristic.textSize = resources.getDimension(R.dimen.constitution_font_size)
+
+        binding.intelligenceField.nameForCharacteristic.text = getString(R.string.intelligence)
+
+        binding.wisdomField.nameForCharacteristic.text = getString(R.string.wisdom)
+
+        binding.charismaField.nameForCharacteristic.text = getString(R.string.charisma)
+
 
         val field_name = view?.findViewById<View>(R.id.linearLayout)
         if (field_name != null) {

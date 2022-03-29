@@ -118,6 +118,58 @@
                 android:layout_weight="0.3" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:layout_marginStart="5sp"
+            android:layout_marginBottom="10sp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+            <include
+                android:id="@+id/strength_field"
+                layout="@layout/characteristic_field"/>
+
+            <include
+                android:id="@+id/dexterity_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+
+            <include
+                android:id="@+id/constitution_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+
+            <include
+                android:id="@+id/intelligence_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+
+            <include
+                android:id="@+id/wisdom_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+
+            <include
+                android:id="@+id/charisma_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_marginBottom="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
