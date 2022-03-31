@@ -56,6 +56,25 @@ class Characteristics : Fragment() {
 
         binding.charismaField.nameForCharacteristic.text = getString(R.string.charisma)
 
+        binding.athleticField.abilityField.text = "Атлетика (сил)"
+        binding.acrobaticField.abilityField.text = "Акробатика (лов)"
+        binding.handDexterityField.abilityField.text = "Ловкость рук (лов)"
+        binding.stealsField.abilityField.text = "Скрытность (лов)"
+        binding.magicField.abilityField.text = "Магия (инт)"
+        binding.historyField.abilityField.text = "История (инт)"
+        binding.investigationField.abilityField.text = "Расследование (инт)"
+        binding.religionField.abilityField.text = "Религия (инт)"
+        binding.insightField.abilityField.text = "Проницательность (муд)"
+        binding.medicineField.abilityField.text = "Медицина (муд)"
+        binding.natureField.abilityField.text = "Природа (муд)"
+        binding.perceptionField.abilityField.text = "Восприятие (сил)"
+        binding.survivalField.abilityField.text = "Выживание (муд)"
+        binding.animalsField.abilityField.text = "Обращение с животными (муд)"
+        binding.deceptionField.abilityField.text = "Обман (хар)"
+        binding.fearField.abilityField.text = "Запугивание (хар)"
+        binding.performanceField.abilityField.text = "Выступление (хар)"
+        binding.beliefField.abilityField.text = "Убеждение (хар)"
+
 
         val field_name = view?.findViewById<View>(R.id.linearLayout)
         if (field_name != null) {
@@ -63,6 +82,8 @@ class Characteristics : Fragment() {
         }
         return binding.root
     }
+    
+
 
 
 }

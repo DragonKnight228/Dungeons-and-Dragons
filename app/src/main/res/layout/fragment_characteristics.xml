@@ -173,7 +173,7 @@
 
         <LinearLayout
             android:id="@+id/linearLayout5"
-            android:layout_width="250sp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="30sp"
             android:layout_marginTop="30sp"
@@ -181,92 +181,111 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
             android:orientation="vertical">
 
-            <include layout="@layout/checkbox_field" />
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/athletic_field"/>
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/acrobatic_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/hand_dexterity_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/steals_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/magic_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/history_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/investigation_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/religion_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/insight_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/medicine_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/nature_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/perception_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/survival_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/animals_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/deception_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/fear_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/performance_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
             <include layout="@layout/checkbox_field"
+                android:id="@+id/belief_field"
                 android:layout_marginTop="30sp"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:layout_width="wrap_content" />
 
         </LinearLayout>
 

@@ -7,13 +7,16 @@
     </data>
 
     <CheckBox
-        android:layout_width="match_parent"
+        android:id="@+id/ability_field"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_marginEnd="5sp"
         android:background="@drawable/shape_for_field"
         android:textColor="@color/black"
-        android:textSize="@dimen/edittext_font"
+        android:textSize="@dimen/checkbox_font"
         android:theme="@style/MyCheckbox"
         android:gravity="center_vertical"
+        android:singleLine="false"
         />
 
 </layout>
