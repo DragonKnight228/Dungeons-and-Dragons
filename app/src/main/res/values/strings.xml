@@ -35,6 +35,16 @@
     <string name="wisdom">Мудрость</string>
     <string name="charisma">Харизма</string>
 
+    <string name="add_new_weapon">Добавить новое оружие</string>
+    <string name="damage">Урон</string>
+    <string name="bonus">Бонус</string>
+
+    <string name="spells">Заклинания</string>
+    <string name="skills_and_features">Навыки и особенности</string>
+    <string name="spell_cells">Ячейки заклинаний</string>
+    <string name="level_for_field">Уровень</string>
+    <string name="description">Описание</string>
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->

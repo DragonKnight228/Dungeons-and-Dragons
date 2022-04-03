@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Magic">
+    android:layout_width="match_parent"
+    android:fillViewport="false"
+    android:scrollbars="vertical"
+    android:scrollbarSize="0dp" tools:context=".Magic">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".Characteristics">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/spells"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/spells"
+            android:layout_marginTop="5sp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textview_font3"
+            android:gravity="center"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_spells"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/spells"
+            />
+
+        <TextView
+            android:id="@+id/skills_and_features"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view_spells"
+            android:text="@string/skills_and_features"
+            android:layout_marginTop="5sp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textview_font3"
+            android:gravity="center"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_skills_and_features"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/skills_and_features"
+            />
+
+        <TextView
+            android:id="@+id/spell_cels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view_skills_and_features"
+            android:text="@string/spell_cells"
+            android:layout_marginTop="5sp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textview_font3"
+            android:gravity="center"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_spell_cels"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/spell_cels"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

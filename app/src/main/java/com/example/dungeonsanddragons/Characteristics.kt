@@ -67,7 +67,7 @@ class Characteristics : Fragment() {
         binding.insightField.abilityField.text = "Проницательность (муд)"
         binding.medicineField.abilityField.text = "Медицина (муд)"
         binding.natureField.abilityField.text = "Природа (муд)"
-        binding.perceptionField.abilityField.text = "Восприятие (сил)"
+        binding.perceptionField.abilityField.text = "Восприятие (муд)"
         binding.survivalField.abilityField.text = "Выживание (муд)"
         binding.animalsField.abilityField.text = "Обращение с животными (муд)"
         binding.deceptionField.abilityField.text = "Обман (хар)"
