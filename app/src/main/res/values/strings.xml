@@ -36,10 +36,15 @@
     <string name="charisma">Харизма</string>
 
     <string name="add_new_weapon">Добавить новое оружие</string>
+    <string name="new_weapon">Новое оружие</string>
+    <string name="weapon_name">Название</string>
     <string name="damage">Урон</string>
     <string name="bonus">Бонус</string>
 
     <string name="spells">Заклинания</string>
+    <string name="save_point">Спасбросок</string>
+    <string name="cell_level">Уровень ячейки</string>
+    <string name="characteristic">Характеристика</string>
     <string name="skills_and_features">Навыки и особенности</string>
     <string name="spell_cells">Ячейки заклинаний</string>
     <string name="level_for_field">Уровень</string>
