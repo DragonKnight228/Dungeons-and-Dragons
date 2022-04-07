@@ -50,6 +50,9 @@
     <string name="level_for_field">Уровень</string>
     <string name="description">Описание</string>
 
+    <string name="delete">Удалить</string>
+    <string name="unshow">Убрать</string>
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
