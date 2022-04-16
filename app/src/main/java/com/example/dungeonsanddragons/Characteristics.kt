@@ -10,6 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.view.TextureView
+import android.widget.TextView
+import com.example.dungeonsanddragons.databinding.FieldWithTextview1Binding
 import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
 
 
@@ -20,6 +23,15 @@ class Characteristics : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
+        bindingText(binding)
+        val field_name = view?.findViewById<View>(R.id.linearLayout)
+        if (field_name != null) {
+            field_name.setBackgroundResource(R.drawable.shape_for_field)
+        }
+        return binding.root
+    }
+
+    fun bindingText(binding: FragmentCharacteristicsBinding){
         binding.fieldName.name.text = getString(R.string.name)
         binding.fieldLevel.name.text = getString(R.string.level)
         binding.fieldRace.name.text = getString(R.string.race)
@@ -74,13 +86,6 @@ class Characteristics : Fragment() {
         binding.fearField.abilityField.text = "Запугивание (хар)"
         binding.performanceField.abilityField.text = "Выступление (хар)"
         binding.beliefField.abilityField.text = "Убеждение (хар)"
-
-
-        val field_name = view?.findViewById<View>(R.id.linearLayout)
-        if (field_name != null) {
-            field_name.setBackgroundResource(R.drawable.shape_for_field)
-        }
-        return binding.root
     }
     
 

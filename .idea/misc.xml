@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/baseline_add_24.xml" value="0.191" />
         <entry key="app/src/main/res/drawable-v24/outline_person_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/circle_for_money.xml" value="0.3015" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.286" />
         <entry key="app/src/main/res/drawable/round_shape_for_modificator.xml" value="0.19" />
         <entry key="app/src/main/res/drawable/shape_for_characteristics.xml" value="0.286" />
@@ -26,8 +27,10 @@
         <entry key="app/src/main/res/layout/field_with_textview2.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_character.xml" value="0.2798913043478261" />
         <entry key="app/src/main/res/layout/fragment_characteristics.xml" value="0.20493247210804463" />
+        <entry key="app/src/main/res/layout/fragment_equipment.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/fragment_magic.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/fragment_weapon.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/money_field.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/name_and_edittext.xml" value="0.5" />
         <entry key="app/src/main/res/layout/skills_and_features_field.xml" value="0.29243266353142366" />
         <entry key="app/src/main/res/layout/spell_cells_field.xml" value="0.29243266353142366" />
