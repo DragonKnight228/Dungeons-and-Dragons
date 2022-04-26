@@ -1,35 +1,55 @@
 package com.example.dungeonsanddragons
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.view.TextureView
-import android.widget.TextView
-import com.example.dungeonsanddragons.databinding.FieldWithTextview1Binding
 import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
+import io.realm.Realm
+import io.realm.RealmConfiguration
+import io.realm.RealmResults
+import io.realm.query
 
 
 class Characteristics : Fragment() {
+
+    lateinit var bind_object: FragmentCharacteristicsBinding
+    lateinit var character_name: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
+        bind_object = binding
         bindingText(binding)
-        val field_name = view?.findViewById<View>(R.id.linearLayout)
-        if (field_name != null) {
-            field_name.setBackgroundResource(R.drawable.shape_for_field)
+
+        val config = RealmConfiguration.Builder(schema = setOf(MyCharacter.MyCharacterCharacteristics::class)).build()
+        val myRealm: Realm = Realm.open(config)
+
+        myRealm.writeBlocking {
+            copyToRealm(MyCharacter.MyCharacterCharacteristics().apply {
+                name = binding.fieldName.inputText.text.toString()
+                level = binding.fieldLevel.inputText.text.toString()
+                race = binding.fieldRace.inputText.text.toString()
+            })
         }
+        val character_name_from_realm: RealmResults<MyCharacter.MyCharacterCharacteristics> = myRealm.query<MyCharacter.MyCharacterCharacteristics>().find()
+        character_name = character_name_from_realm.toString()
+
+        myRealm.close()
+
+        view?.findViewById<View>(R.id.linearLayout)?.setBackgroundResource(R.drawable.shape_for_field)
         return binding.root
     }
+
+    override fun onResume() {
+        super.onResume()
+        bind_object.fieldName.inputText.setText(character_name)
+    }
+
+
 
     fun bindingText(binding: FragmentCharacteristicsBinding){
         binding.fieldName.name.text = getString(R.string.name)

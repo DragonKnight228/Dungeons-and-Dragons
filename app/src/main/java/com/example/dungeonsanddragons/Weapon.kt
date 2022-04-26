@@ -1,15 +1,13 @@
 package com.example.dungeonsanddragons
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 import android.widget.TextView
-import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
 import com.example.dungeonsanddragons.databinding.FragmentWeaponBinding
 import java.text.FieldPosition
 
@@ -38,18 +36,18 @@ class Weapon : Fragment() {
         binding.maxHpField.name1.textSize = resources.getDimension(R.dimen.alternative_font_size)
 
         binding.initiativeField.name1.text = getString(R.string.initiative)
-        binding.initiativeField.name1.textSize = resources.getDimension(R.dimen.alternative_font_size)
+        binding.initiativeField.name1.textSize =
+            resources.getDimension(R.dimen.alternative_font_size)
 
-        var recyclerView: RecyclerView? = view?.findViewById(R.id.recycler_view)
+        val recyclerView: RecyclerView? = view?.findViewById(R.id.recycler_view)
         if (recyclerView != null) {
-            recyclerView.layoutManager = LinearLayoutManager(this.context)
+            recyclerView.layoutManager =
+                LinearLayoutManager(this.context)
         }
 
-        val field_name = view?.findViewById<View>(R.id.linearLayout)
-        if (field_name != null) {
-            field_name.setBackgroundResource(R.drawable.shape_for_field)
-        }
-        return binding.root    }
+        view?.findViewById<View>(R.id.linearLayout)?.setBackgroundResource(R.drawable.shape_for_field)
+        return binding.root
+    }
 
 }
 

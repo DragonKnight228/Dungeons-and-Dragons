@@ -1,6 +1,6 @@
 package com.example.dungeonsanddragons
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toolbar
 
@@ -9,7 +9,7 @@ class New_weapon_activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_weapon)
 
-        val toolbar: android.support.v7.widget.Toolbar = findViewById(R.id.toolbar)
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         toolbar.setTitle(R.string.new_weapon)
         setSupportActionBar(toolbar)
     }

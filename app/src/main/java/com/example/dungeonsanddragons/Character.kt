@@ -3,12 +3,12 @@ package com.example.dungeonsanddragons
 import android.content.res.Resources
 import android.media.Image
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import java.net.URL
 
 class Character : AppCompatActivity() {
@@ -18,7 +18,7 @@ class Character : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_character)
 
-        val toolbar: android.support.v7.widget.Toolbar = findViewById(R.id.toolbar)
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         toolbar.setTitle(this.getString(R.string.your_character))
         setSupportActionBar(toolbar)
 
@@ -35,7 +35,7 @@ class Character : AppCompatActivity() {
 }
 }
 
-class SectionsPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
+class SectionsPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
     fun SectionsPagerAdapter(fm: FragmentManager) {
 
     }
@@ -44,7 +44,7 @@ class SectionsPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
         return 4
     }
 
-    override fun getItem(position: Int): Fragment? {
+    override fun getItem(position: Int): Fragment {
         when (position){
             0 -> {
                 return Characteristics()
@@ -59,7 +59,7 @@ class SectionsPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
                 return Magic()
             }
         }
-        return null
+        return Characteristics()
     }
 
 
