@@ -5,25 +5,43 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+import java.util.ArrayList
 import java.util.logging.Level
 
-class MyCharacter(): RealmObject{
+class MyCharacter: RealmObject{
+
     class MyCharacterCharacteristics(): RealmObject{
+        @PrimaryKey var character_id: Int = 0
         lateinit var name: String
         lateinit var level: String
         lateinit var race: String
     }
 }
 
+data class character(val id: String, val name: String, val level: String)
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         toolbar.setTitle(this.getString(R.string.storage))
         setSupportActionBar(toolbar)
+
+        val myRecycler = findViewById<RecyclerView>(R.id.recycler_view)
+        myRecycler.layoutManager = LinearLayoutManager(this)
+        val characterList = ArrayList<character>()
+        characterList.add(character("0", "Gazgul", "10"))
+        val adapter = MyRecyclerAdapter(characterList)
+        myRecycler.adapter = adapter
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -40,4 +58,7 @@ class MainActivity : AppCompatActivity() {
         else -> { return super.onOptionsItemSelected(item) }
     }
     }
+
 }
+
+
