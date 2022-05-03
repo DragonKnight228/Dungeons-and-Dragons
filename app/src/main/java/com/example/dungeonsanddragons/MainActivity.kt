@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
         toolbar.setTitle(this.getString(R.string.storage))
         setSupportActionBar(toolbar)
 
-        val myRecycler = findViewById<RecyclerView>(R.id.recycler_view)
+        val myRecycler = findViewById<RecyclerView>(R.id.my_recycler)
         myRecycler.layoutManager = LinearLayoutManager(this)
         val characterList = ArrayList<character>()
-        characterList.add(character("0", "Gazgul", "10"))
+        characterList.add(character("0", "Gazgul Mak Uruk Traka", "10"))
         val adapter = MyRecyclerAdapter(characterList)
         myRecycler.adapter = adapter
 
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.create_character_button -> {
-                val intent: Intent = Intent(this, Character::class.java)
+                val intent= Intent(this, Character::class.java)
                         startActivity (intent)
                 return true}
         else -> { return super.onOptionsItemSelected(item) }

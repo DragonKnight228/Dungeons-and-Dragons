@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
     <include
         layout="@layout/toolbar"
@@ -13,7 +14,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:itemCount="3"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20sp"
+        android:layout_marginStart="8sp"
+        android:layout_marginEnd="8sp"
         tools:listitem="@layout/field_for_character"/>
 </LinearLayout>
