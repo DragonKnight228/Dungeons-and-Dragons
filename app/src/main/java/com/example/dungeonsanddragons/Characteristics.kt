@@ -25,6 +25,14 @@ class Characteristics : Fragment() {
         bind_object = binding
         bindingText(binding)
 
+        view?.findViewById<View>(R.id.linearLayout)?.setBackgroundResource(R.drawable.shape_for_field)
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val binding = bind_object
+        bindingText(binding)
         val config = RealmConfiguration.Builder(schema = setOf(MyCharacter.MyCharacterCharacteristics::class)).build()
         val myRealm: Realm = Realm.open(config)
 
@@ -39,13 +47,6 @@ class Characteristics : Fragment() {
         character_name = character_name_from_realm.toString()
 
         myRealm.close()
-
-        view?.findViewById<View>(R.id.linearLayout)?.setBackgroundResource(R.drawable.shape_for_field)
-        return binding.root
-    }
-
-    override fun onResume() {
-        super.onResume()
         bind_object.fieldName.inputText.setText(character_name)
     }
 
