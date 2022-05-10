@@ -9,18 +9,21 @@ import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.RealmResults
-import io.realm.query
+import io.realm.annotations.PrimaryKey
+
 
 
 class Characteristics : Fragment() {
 
+
     lateinit var bind_object: FragmentCharacteristicsBinding
-    lateinit var character_name: String
+    var current_character_id: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
         bind_object = binding
         bindingText(binding)
@@ -33,21 +36,6 @@ class Characteristics : Fragment() {
         super.onResume()
         val binding = bind_object
         bindingText(binding)
-        val config = RealmConfiguration.Builder(schema = setOf(MyCharacter.MyCharacterCharacteristics::class)).build()
-        val myRealm: Realm = Realm.open(config)
-
-        myRealm.writeBlocking {
-            copyToRealm(MyCharacter.MyCharacterCharacteristics().apply {
-                name = binding.fieldName.inputText.text.toString()
-                level = binding.fieldLevel.inputText.text.toString()
-                race = binding.fieldRace.inputText.text.toString()
-            })
-        }
-        val character_name_from_realm: RealmResults<MyCharacter.MyCharacterCharacteristics> = myRealm.query<MyCharacter.MyCharacterCharacteristics>().find()
-        character_name = character_name_from_realm.toString()
-
-        myRealm.close()
-        bind_object.fieldName.inputText.setText(character_name)
     }
 
 

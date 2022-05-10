@@ -4,8 +4,13 @@ package com.example.dungeonsanddragons
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import io.realm.OrderedRealmCollection
+import io.realm.Realm
+import io.realm.RealmResults
+
 
 class CharacterVH(view: View) : RecyclerView.ViewHolder(view) {
     val textViewId: TextView = view.findViewById(R.id.id_character)
@@ -13,7 +18,7 @@ class CharacterVH(view: View) : RecyclerView.ViewHolder(view) {
     val textViewLevel: TextView = view.findViewById(R.id.character_level)
 }
 
-class MyRecyclerAdapter(private val characterList: List<character>) : RecyclerView.Adapter<CharacterVH>() {
+class MyRecyclerAdapter(private val characterList: OrderedRealmCollection<DatabaseCharacter?>) : RealmRecyclerViewAdapter<DatabaseCharacter?, CharacterVH?>(characterList, true) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterVH {
         val view =
@@ -23,7 +28,9 @@ class MyRecyclerAdapter(private val characterList: List<character>) : RecyclerVi
 
     override fun onBindViewHolder(holder: CharacterVH, position: Int) {
         val characterListItems = characterList[position]
-        holder.textViewId.text = characterListItems.id
+        if (characterListItems != null) {
+            holder.textViewId.text = characterListItems.character_id.toString()
+        }
         holder.textViewName.text = characterListItems.name
         holder.textViewLevel.text = characterListItems.level
     }

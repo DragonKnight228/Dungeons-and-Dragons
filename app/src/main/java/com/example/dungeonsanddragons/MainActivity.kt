@@ -16,22 +16,10 @@ import io.realm.annotations.PrimaryKey
 import java.util.ArrayList
 import java.util.logging.Level
 
-class MyCharacter: RealmObject{
-
-    @PrimaryKey var character_id: Int = 0
-    class MyCharacterCharacteristics(): RealmObject{
-        lateinit var name: String
-        lateinit var level: String
-        lateinit var race: String
-    }
-}
 
 data class character(val id: String, val name: String?, val level: String?)
 
 class MainActivity : AppCompatActivity() {
-
-
-    public val config = RealmConfiguration.Builder(schema = setOf(MyCharacter::class)).build()
 
     lateinit var current_character: character
     val characterList = createCharacterList()
@@ -39,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         toolbar.setTitle(this.getString(R.string.storage))
         setSupportActionBar(toolbar)
@@ -77,7 +64,10 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.create_character_button -> {
                 val new_character = createCharacter((characterList.size + 1).toString(),"","")
-
+                var bundle = Bundle()
+                bundle.putString("current_character_id", current_character.id)
+                var characteristics_fragment = Characteristics()
+                characteristics_fragment.arguments = bundle
                 val intent= Intent(this, Character::class.java)
                         startActivity (intent)
                 return true}
@@ -92,9 +82,7 @@ class MainActivity : AppCompatActivity() {
     }
 
      fun createCharacter(character_id: String, name: String?, level: String?): character{
-        val realm = Realm.open(config)
         val character = character(character_id, name, level)
-        realm.close()
          current_character = character
         return character
     }
