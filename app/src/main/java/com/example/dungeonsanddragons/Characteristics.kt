@@ -8,25 +8,39 @@ import android.view.ViewGroup
 import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
 import io.realm.Realm
 import io.realm.RealmConfiguration
+import io.realm.RealmQuery
 import io.realm.RealmResults
 import io.realm.annotations.PrimaryKey
-
+import io.realm.kotlin.where
 
 
 class Characteristics : Fragment() {
 
 
+    lateinit var ourRealm: Realm
+    lateinit var configuration: RealmConfiguration
+
     lateinit var bind_object: FragmentCharacteristicsBinding
-    var current_character_id: String = ""
+    var current_character_id: String? = ""
+    var current_character: DatabaseCharacter? = DatabaseCharacter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
+        context?.let { Realm.init(it) }
+        configuration = RealmConfiguration.Builder().name("Characters database").allowWritesOnUiThread(true).build()
+        ourRealm = Realm.getInstance(configuration)
+
+        current_character_id = arguments?.getString("current_character_id")
+        current_character =
+            ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
+
         val binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
         bind_object = binding
         bindingText(binding)
+        binding.fieldName.inputText.setText(current_character?.character_name)
 
         view?.findViewById<View>(R.id.linearLayout)?.setBackgroundResource(R.drawable.shape_for_field)
         return binding.root

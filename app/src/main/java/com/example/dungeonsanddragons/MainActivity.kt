@@ -5,24 +5,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
-import android.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.realm.OrderedRealmCollection
 import io.realm.Realm
 import io.realm.RealmConfiguration
-import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
-import java.util.ArrayList
-import java.util.logging.Level
+import io.realm.kotlin.where
 
-
-data class character(val id: String, val name: String?, val level: String?)
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var current_character: character
-    val characterList = createCharacterList()
+
+    lateinit var ourRealm: Realm
+    lateinit var configuration: RealmConfiguration
+
+
+    private var our_character: DatabaseCharacter? = DatabaseCharacter()
+    lateinit var characterList: OrderedRealmCollection<DatabaseCharacter?>
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,11 @@ class MainActivity : AppCompatActivity() {
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         toolbar.setTitle(this.getString(R.string.storage))
         setSupportActionBar(toolbar)
+
+        Realm.init(this)
+        configuration = RealmConfiguration.Builder().name("Characters database").allowWritesOnUiThread(true).build()
+        ourRealm = Realm.getInstance(configuration)
+        characterList = createCharacterList()
 
         val myRecycler = findViewById<RecyclerView>(R.id.my_recycler)
         myRecycler.layoutManager = LinearLayoutManager(this)
@@ -50,10 +56,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onPause() {
-        super.onPause()
-        characterList.add(current_character)
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
@@ -63,30 +65,39 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.create_character_button -> {
-                val new_character = createCharacter((characterList.size + 1).toString(),"","")
-                var bundle = Bundle()
-                bundle.putString("current_character_id", current_character.id)
-                var characteristics_fragment = Characteristics()
-                characteristics_fragment.arguments = bundle
-                val intent= Intent(this, Character::class.java)
-                        startActivity (intent)
+                createCharacter((characterList.size + 1),"","")
+
+                goToCharacter(our_character)
                 return true}
         else -> { return super.onOptionsItemSelected(item) }
     }
     }
 
-    fun createCharacterList(): ArrayList<character>{
-        val characterList = ArrayList<character>()
-        characterList.add(character("1", "Gazgul Mak Uruk", "10"))
-        return characterList
+    fun createCharacterList(): OrderedRealmCollection<DatabaseCharacter?> {
+        return ourRealm.where<DatabaseCharacter>().findAll()
     }
 
-     fun createCharacter(character_id: String, name: String?, level: String?): character{
-        val character = character(character_id, name, level)
-         current_character = character
+     fun createCharacter(character_id: Int, name: String?, level: String?): DatabaseCharacter{
+        val character = DatabaseCharacter()
+         character.character_id = character_id
+         ourRealm.executeTransaction {transactionRealm -> transactionRealm.insert(character)}
+         our_character = character
         return character
     }
 
+    fun goToCharacter(character: DatabaseCharacter?){
+        val bundle = Bundle()
+        character?.let { bundle.putInt("current_character_id", it.character_id) }
+        val characteristics_fragment = Characteristics()
+        characteristics_fragment.arguments = bundle
+
+        val intent= Intent(this, Character::class.java)
+        startActivity (intent)
+    }
 }
+
+
+
+
 
 
