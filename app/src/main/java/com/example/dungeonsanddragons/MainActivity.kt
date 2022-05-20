@@ -20,8 +20,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var configuration: RealmConfiguration
 
 
-    private var our_character: DatabaseCharacter? = DatabaseCharacter()
+    private var our_character: DatabaseCharacter = DatabaseCharacter()
     lateinit var characterList: OrderedRealmCollection<DatabaseCharacter?>
+
 
 
 
@@ -65,7 +66,11 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.create_character_button -> {
-                createCharacter((characterList.size + 1),"","")
+                val max_id_character: Number? = ourRealm.where<DatabaseCharacter>().max("character_id")
+                if (max_id_character != null) {
+                    createCharacter((max_id_character.toInt()) + 1,"","")
+                }
+                else createCharacter((characterList.size) + 1,"","")
 
                 goToCharacter(our_character)
                 return true}
@@ -85,13 +90,14 @@ class MainActivity : AppCompatActivity() {
         return character
     }
 
-    fun goToCharacter(character: DatabaseCharacter?){
+    fun goToCharacter(character: DatabaseCharacter){
         val bundle = Bundle()
-        character?.let { bundle.putInt("current_character_id", it.character_id) }
+        character.let { bundle.putInt("current_character_id", it.character_id) }
         val characteristics_fragment = Characteristics()
         characteristics_fragment.arguments = bundle
 
         val intent= Intent(this, Character::class.java)
+        intent.putExtra("character_id", character.character_id)
         startActivity (intent)
     }
 }

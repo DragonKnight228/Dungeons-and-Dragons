@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Dungeons And Dragons</string>
     <string name="create_character">Create character</string>
+    <string name="delete_character">Delete character</string>
     <string name="character_name">Name</string>
     <string name="title_activity_character">Character</string>
 

@@ -52,6 +52,9 @@ class MyRecyclerAdapter(private val characterList: OrderedRealmCollection<Databa
             characteristics_fragment.arguments = bundle
 
             val intent= Intent(view.context, Character::class.java)
+            if (characterListItems != null) {
+                intent.putExtra("character_id", characterListItems.character_id)
+            }
             view.context.startActivity(intent)
 
         })
