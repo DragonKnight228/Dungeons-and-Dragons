@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private var our_character: DatabaseCharacter = DatabaseCharacter()
-    lateinit var characterList: OrderedRealmCollection<DatabaseCharacter?>
+    lateinit var characterList: OrderedRealmCollection<DatabaseCharacter>
 
 
 
@@ -68,9 +68,9 @@ class MainActivity : AppCompatActivity() {
             R.id.create_character_button -> {
                 val max_id_character: Number? = ourRealm.where<DatabaseCharacter>().max("character_id")
                 if (max_id_character != null) {
-                    createCharacter((max_id_character.toInt()) + 1,"","")
+                    createCharacter((max_id_character.toInt()) + 1,"Pupa","")
                 }
-                else createCharacter((characterList.size) + 1,"","")
+                else createCharacter((characterList.size) + 1,"Pupa","")
 
                 goToCharacter(our_character)
                 return true}
@@ -78,13 +78,15 @@ class MainActivity : AppCompatActivity() {
     }
     }
 
-    fun createCharacterList(): OrderedRealmCollection<DatabaseCharacter?> {
+    fun createCharacterList(): OrderedRealmCollection<DatabaseCharacter> {
         return ourRealm.where<DatabaseCharacter>().findAll()
     }
 
-     fun createCharacter(character_id: Int, name: String?, level: String?): DatabaseCharacter{
+     fun createCharacter(character_id: Int, name: String, level: String): DatabaseCharacter{
         val character = DatabaseCharacter()
          character.character_id = character_id
+         character.character_name = name
+         character.character_level = level
          ourRealm.executeTransaction {transactionRealm -> transactionRealm.insert(character)}
          our_character = character
         return character
@@ -93,13 +95,14 @@ class MainActivity : AppCompatActivity() {
     fun goToCharacter(character: DatabaseCharacter){
         val bundle = Bundle()
         character.let { bundle.putInt("current_character_id", it.character_id) }
-        val characteristics_fragment = Characteristics()
-        characteristics_fragment.arguments = bundle
+
 
         val intent= Intent(this, Character::class.java)
         intent.putExtra("character_id", character.character_id)
         startActivity (intent)
     }
+
+
 }
 
 

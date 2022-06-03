@@ -1,7 +1,5 @@
 package com.example.dungeonsanddragons
 
-import android.content.res.Resources
-import android.media.Image
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,10 +9,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
+import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
 import io.realm.*
 import io.realm.kotlin.where
-import java.net.URL
-import kotlin.properties.Delegates
 
 class Character : AppCompatActivity() {
 
@@ -71,6 +68,19 @@ class Character : AppCompatActivity() {
                 }
                 onBackPressed()
                 return true}
+
+            R.id.save_character_button -> {
+                val saving_character: DatabaseCharacter? = ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
+                val binding = FragmentCharacteristicsBinding.inflate(layoutInflater)
+                ourRealm.executeTransaction {
+                    if (saving_character != null) {
+                        saving_character.character_name = binding.fieldName.inputText.text.toString()
+                        saving_character.character_level = binding.fieldLevel.inputText.text.toString()
+                    }
+                }
+                onBackPressed()
+                return true
+            }
             else -> { return super.onOptionsItemSelected(item) }
         }
 }

@@ -1,18 +1,14 @@
 package com.example.dungeonsanddragons
 
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.OrderedRealmCollection
-import io.realm.Realm
-import io.realm.RealmResults
 
 
 class CharacterVH(view: View) : RecyclerView.ViewHolder(view) {
@@ -21,7 +17,7 @@ class CharacterVH(view: View) : RecyclerView.ViewHolder(view) {
     val textViewLevel: TextView = view.findViewById(R.id.character_level)
 }
 
-class MyRecyclerAdapter(private val characterList: OrderedRealmCollection<DatabaseCharacter?>) : RealmRecyclerViewAdapter<DatabaseCharacter?, CharacterVH?>(characterList, true) {
+class MyRecyclerAdapter(private val characterList: OrderedRealmCollection<DatabaseCharacter>) : RealmRecyclerViewAdapter<DatabaseCharacter, CharacterVH?>(characterList, true) {
 
     lateinit var view: View
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterVH {

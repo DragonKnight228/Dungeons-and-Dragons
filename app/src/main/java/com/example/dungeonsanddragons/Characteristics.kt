@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
 import io.realm.Realm
 import io.realm.RealmConfiguration
@@ -14,33 +15,30 @@ import io.realm.annotations.PrimaryKey
 import io.realm.kotlin.where
 
 
-class Characteristics : Fragment() {
+class Characteristics() : Fragment() {
 
 
     lateinit var ourRealm: Realm
     lateinit var configuration: RealmConfiguration
 
     lateinit var bind_object: FragmentCharacteristicsBinding
-    var current_character_id: String? = ""
     var current_character: DatabaseCharacter? = DatabaseCharacter()
+    var current_character_id = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
+        val binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
+        bind_object = binding
+        bindingText(binding)
+
         context?.let { Realm.init(it) }
         configuration = RealmConfiguration.Builder().name("Characters database").allowWritesOnUiThread(true).build()
         ourRealm = Realm.getInstance(configuration)
 
-        current_character_id = arguments?.getString("current_character_id")
-        current_character =
-            ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
-
-        val binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
-        bind_object = binding
-        bindingText(binding)
-        binding.fieldName.inputText.setText(current_character?.character_name)
+            current_character = ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
 
         view?.findViewById<View>(R.id.linearLayout)?.setBackgroundResource(R.drawable.shape_for_field)
         return binding.root
@@ -50,6 +48,11 @@ class Characteristics : Fragment() {
         super.onResume()
         val binding = bind_object
         bindingText(binding)
+        ourRealm.executeTransaction{
+            binding.fieldName.inputText.setText(current_character?.character_name ?: "Null")
+            binding.fieldLevel.inputText.setText(current_character?.character_level ?: "Null")
+        }
+
     }
 
 
