@@ -93,8 +93,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToCharacter(character: DatabaseCharacter){
-        val bundle = Bundle()
-        character.let { bundle.putInt("current_character_id", it.character_id) }
+        Characteristics.newInstance(character.character_id)
 
 
         val intent= Intent(this, Character::class.java)

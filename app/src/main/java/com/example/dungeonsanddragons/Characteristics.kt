@@ -1,5 +1,6 @@
 package com.example.dungeonsanddragons
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,7 +16,7 @@ import io.realm.annotations.PrimaryKey
 import io.realm.kotlin.where
 
 
-class Characteristics() : Fragment() {
+class Characteristics: Fragment() {
 
 
     lateinit var ourRealm: Realm
@@ -23,7 +24,8 @@ class Characteristics() : Fragment() {
 
     lateinit var bind_object: FragmentCharacteristicsBinding
     var current_character: DatabaseCharacter? = DatabaseCharacter()
-    var current_character_id = 1
+    private var current_character_id = 1
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,9 +36,10 @@ class Characteristics() : Fragment() {
         bind_object = binding
         bindingText(binding)
 
-        context?.let { Realm.init(it) }
+        current_character_id = (activity?.intent?.extras?.getInt("character_id") ?: context?.let { Realm.init(it) }) as Int
         configuration = RealmConfiguration.Builder().name("Characters database").allowWritesOnUiThread(true).build()
         ourRealm = Realm.getInstance(configuration)
+
 
             current_character = ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
 
@@ -46,6 +49,8 @@ class Characteristics() : Fragment() {
 
     override fun onResume() {
         super.onResume()
+
+
         val binding = bind_object
         bindingText(binding)
         ourRealm.executeTransaction{
@@ -113,7 +118,9 @@ class Characteristics() : Fragment() {
         binding.performanceField.abilityField.text = "Выступление (хар)"
         binding.beliefField.abilityField.text = "Убеждение (хар)"
     }
-    
+
+
+
 
 
 

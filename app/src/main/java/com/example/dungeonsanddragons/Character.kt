@@ -30,6 +30,8 @@ class Character : AppCompatActivity() {
             current_character_id = bundle.getInt("character_id")
         }
 
+
+
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         toolbar.setTitle(this.getString(R.string.your_character))
         setSupportActionBar(toolbar)
