@@ -68,9 +68,9 @@ class MainActivity : AppCompatActivity() {
             R.id.create_character_button -> {
                 val max_id_character: Number? = ourRealm.where<DatabaseCharacter>().max("character_id")
                 if (max_id_character != null) {
-                    createCharacter((max_id_character.toInt()) + 1,"Pupa","")
+                    createCharacter((max_id_character.toInt()) + 1,"","")
                 }
-                else createCharacter((characterList.size) + 1,"Pupa","")
+                else createCharacter((characterList.size) + 1,"","")
 
                 goToCharacter(our_character)
                 return true}
@@ -93,8 +93,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToCharacter(character: DatabaseCharacter){
-        Characteristics.newInstance(character.character_id)
-
 
         val intent= Intent(this, Character::class.java)
         intent.putExtra("character_id", character.character_id)

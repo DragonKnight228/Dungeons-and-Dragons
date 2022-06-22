@@ -1,15 +1,23 @@
 package com.example.dungeonsanddragons
 
+import android.os.Binder
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.google.android.material.tabs.TabLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
+import androidx.fragment.app.findFragment
+import androidx.viewpager.widget.PagerAdapter
+import com.example.dungeonsanddragons.databinding.ActivityCharacterBinding
 import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
+import com.example.dungeonsanddragons.databinding.FragmentEquipmentBinding
 import io.realm.*
 import io.realm.kotlin.where
 
@@ -20,15 +28,22 @@ class Character : AppCompatActivity() {
     lateinit var ourRealm: Realm
     lateinit var configuration: RealmConfiguration
     var current_character_id = 0
+    lateinit var pager: ViewPager
+    lateinit var pagerAdapter: Character.SectionsPagerAdapter
+    lateinit var binding: ActivityCharacterBinding
+    lateinit var bind_from_fragment: FragmentCharacteristicsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_character)
+        binding = ActivityCharacterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val bundle = intent.extras
         if (bundle != null) {
             current_character_id = bundle.getInt("character_id")
         }
+
+
 
 
 
@@ -42,9 +57,10 @@ class Character : AppCompatActivity() {
         current_character =
             ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
 
-        val pagerAdapter = SectionsPagerAdapter(supportFragmentManager)
-        val pager: ViewPager = findViewById(R.id.pager)
+        pagerAdapter = SectionsPagerAdapter(supportFragmentManager)
+        pager = findViewById(R.id.pager)
         pager.adapter = pagerAdapter
+
 
         val tabLayout: TabLayout = findViewById(R.id.tablayout)
         tabLayout.setupWithViewPager(pager)
@@ -73,11 +89,10 @@ class Character : AppCompatActivity() {
 
             R.id.save_character_button -> {
                 val saving_character: DatabaseCharacter? = ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
-                val binding = FragmentCharacteristicsBinding.inflate(layoutInflater)
                 ourRealm.executeTransaction {
                     if (saving_character != null) {
-                        saving_character.character_name = binding.fieldName.inputText.text.toString()
-                        saving_character.character_level = binding.fieldLevel.inputText.text.toString()
+                        saving_character.character_name = bind_from_fragment.fieldName.inputText.text.toString()
+                        saving_character.character_level = bind_from_fragment.fieldLevel.inputText.text.toString()
                     }
                 }
                 onBackPressed()

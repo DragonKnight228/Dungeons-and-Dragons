@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import com.example.dungeonsanddragons.databinding.ActivityMainBinding
 import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
 import io.realm.Realm
 import io.realm.RealmConfiguration
@@ -22,9 +23,9 @@ class Characteristics: Fragment() {
     lateinit var ourRealm: Realm
     lateinit var configuration: RealmConfiguration
 
-    lateinit var bind_object: FragmentCharacteristicsBinding
     var current_character: DatabaseCharacter? = DatabaseCharacter()
     private var current_character_id = 1
+    lateinit var bind_object: FragmentCharacteristicsBinding
 
 
     override fun onCreateView(
@@ -34,28 +35,26 @@ class Characteristics: Fragment() {
 
         val binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
         bind_object = binding
+        val character_activity = activity as Character
+        character_activity.bind_from_fragment = binding
         bindingText(binding)
 
         current_character_id = (activity?.intent?.extras?.getInt("character_id") ?: context?.let { Realm.init(it) }) as Int
         configuration = RealmConfiguration.Builder().name("Characters database").allowWritesOnUiThread(true).build()
         ourRealm = Realm.getInstance(configuration)
-
-
             current_character = ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
 
         view?.findViewById<View>(R.id.linearLayout)?.setBackgroundResource(R.drawable.shape_for_field)
         return binding.root
     }
 
+
     override fun onResume() {
         super.onResume()
-
-
-        val binding = bind_object
-        bindingText(binding)
+        bindingText(bind_object)
         ourRealm.executeTransaction{
-            binding.fieldName.inputText.setText(current_character?.character_name ?: "Null")
-            binding.fieldLevel.inputText.setText(current_character?.character_level ?: "Null")
+            bind_object.fieldName.inputText.setText(current_character?.character_name)
+            bind_object.fieldLevel.inputText.setText(current_character?.character_level)
         }
 
     }
