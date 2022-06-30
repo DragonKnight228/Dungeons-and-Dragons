@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         Realm.init(this)
-        configuration = RealmConfiguration.Builder().name("Characters database").allowWritesOnUiThread(true).build()
+        configuration = RealmConfiguration.Builder().name("Characters database").deleteRealmIfMigrationNeeded().allowWritesOnUiThread(true).build()
         ourRealm = Realm.getInstance(configuration)
         characterList = createCharacterList()
 

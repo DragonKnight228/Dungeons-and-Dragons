@@ -43,6 +43,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/characteristic_modifier"
             android:layout_width="60sp"
             android:layout_height="60sp"
             android:layout_gravity="center_horizontal|bottom"

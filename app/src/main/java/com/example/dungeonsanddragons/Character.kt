@@ -1,5 +1,6 @@
 package com.example.dungeonsanddragons
 
+import android.content.Intent
 import android.os.Binder
 import android.os.Bundle
 import android.renderscript.ScriptGroup
@@ -43,16 +44,12 @@ class Character : AppCompatActivity() {
             current_character_id = bundle.getInt("character_id")
         }
 
-
-
-
-
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         toolbar.setTitle(this.getString(R.string.your_character))
         setSupportActionBar(toolbar)
 
         Realm.init(this)
-        configuration = RealmConfiguration.Builder().name("Characters database").allowWritesOnUiThread(true).build()
+        configuration = RealmConfiguration.Builder().name("Characters database").deleteRealmIfMigrationNeeded().allowWritesOnUiThread(true).build()
         ourRealm = Realm.getInstance(configuration)
         current_character =
             ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
@@ -93,9 +90,29 @@ class Character : AppCompatActivity() {
                     if (saving_character != null) {
                         saving_character.character_name = bind_from_fragment.fieldName.inputText.text.toString()
                         saving_character.character_level = bind_from_fragment.fieldLevel.inputText.text.toString()
+                        saving_character.character_race = bind_from_fragment.fieldRace.inputText.text.toString()
+                        saving_character.character_xp = bind_from_fragment.fieldXp.inputText.text.toString()
+
+                        saving_character.character_kd = bind_from_fragment.kdField.inputText1.text.toString()
+                        saving_character.character_hits = bind_from_fragment.hpField.inputText1.text.toString()
+                        saving_character.character_kh = bind_from_fragment.hpDiceField.inputText1.text.toString()
+                        saving_character.character_speed = bind_from_fragment.speedField.inputText1.text.toString()
+                        saving_character.character_max_hits = bind_from_fragment.maxHpField.inputText1.text.toString()
+                        saving_character.character_initiative = bind_from_fragment.initiativeField.inputText1.text.toString()
+
+
+                        saving_character.character_strength = bind_from_fragment.strengthField.characteristicInputText.text.toString()
+                        saving_character.character_dexterity = bind_from_fragment.dexterityField.characteristicInputText.text.toString()
+                        saving_character.character_constitution = bind_from_fragment.constitutionField.characteristicInputText.text.toString()
+                        saving_character.character_intelligence = bind_from_fragment.intelligenceField.characteristicInputText.text.toString()
+                        saving_character.character_wisdom = bind_from_fragment.wisdomField.characteristicInputText.text.toString()
+                        saving_character.character_charisma = bind_from_fragment.charismaField.characteristicInputText.text.toString()
                     }
                 }
-                onBackPressed()
+                finish()
+                val intent= Intent(this, Character::class.java)
+                intent.putExtra("character_id", current_character_id)
+                startActivity (intent)
                 return true
             }
             else -> { return super.onOptionsItemSelected(item) }

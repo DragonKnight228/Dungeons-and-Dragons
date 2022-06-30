@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import com.example.dungeonsanddragons.databinding.ActivityMainBinding
 import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
 import io.realm.Realm
@@ -40,7 +41,7 @@ class Characteristics: Fragment() {
         bindingText(binding)
 
         current_character_id = (activity?.intent?.extras?.getInt("character_id") ?: context?.let { Realm.init(it) }) as Int
-        configuration = RealmConfiguration.Builder().name("Characters database").allowWritesOnUiThread(true).build()
+        configuration = RealmConfiguration.Builder().name("Characters database").deleteRealmIfMigrationNeeded().allowWritesOnUiThread(true).build()
         ourRealm = Realm.getInstance(configuration)
             current_character = ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
 
@@ -55,8 +56,97 @@ class Characteristics: Fragment() {
         ourRealm.executeTransaction{
             bind_object.fieldName.inputText.setText(current_character?.character_name)
             bind_object.fieldLevel.inputText.setText(current_character?.character_level)
+            bind_object.fieldRace.inputText.setText(current_character?.character_race)
+            bind_object.fieldXp.inputText.setText(current_character?.character_xp)
+            
+            bind_object.kdField.inputText1.setText(current_character?.character_kd)
+            bind_object.hpField.inputText1.setText(current_character?.character_hits)
+            bind_object.hpDiceField.inputText1.setText(current_character?.character_kh)
+            bind_object.speedField.inputText1.setText(current_character?.character_speed)
+            bind_object.maxHpField.inputText1.setText(current_character?.character_max_hits)
+            bind_object.initiativeField.inputText1.setText(current_character?.character_initiative)
+
+            bind_object.strengthField.characteristicInputText.setText(current_character?.character_strength)
+            bind_object.strengthField.characteristicModifier.text = getModifier(current_character, "strengh").toString()
+
+            bind_object.dexterityField.characteristicInputText.setText(current_character?.character_dexterity)
+            bind_object.dexterityField.characteristicModifier.text = getModifier(current_character, "dexterity").toString()
+
+            bind_object.constitutionField.characteristicInputText.setText(current_character?.character_constitution)
+            bind_object.constitutionField.characteristicModifier.text = getModifier(current_character, "constitution").toString()
+
+            bind_object.intelligenceField.characteristicInputText.setText(current_character?.character_intelligence)
+            bind_object.intelligenceField.characteristicModifier.text = getModifier(current_character, "intelligence").toString()
+
+            bind_object.wisdomField.characteristicInputText.setText(current_character?.character_wisdom)
+            bind_object.wisdomField.characteristicModifier.text = getModifier(current_character, "wisdom").toString()
+
+            bind_object.charismaField.characteristicInputText.setText(current_character?.character_charisma)
+            bind_object.charismaField.characteristicModifier.text = getModifier(current_character, "charisma").toString()
         }
 
+    }
+
+    fun getModifier(current_character: DatabaseCharacter?, character_characteristic: String): Int {
+        var modifier = 0
+
+        when {
+            character_characteristic == "strengh" -> {
+                var strength_modifier = 0
+
+                if (current_character?.character_strength == "") {
+                    strength_modifier = 0
+                }
+                else {strength_modifier = (current_character?.character_strength?.toInt()?.minus(10)?.div(2)) ?: 2}
+                modifier = strength_modifier
+            }
+
+            character_characteristic == "dexterity" -> {
+                var dexterity_modifier = 0
+                if (current_character?.character_dexterity == "") {
+                    dexterity_modifier = 0
+                } else dexterity_modifier =
+                    (current_character?.character_dexterity?.toInt()?.minus(10)?.div(2)) ?: 0
+                modifier = dexterity_modifier
+            }
+
+            character_characteristic == "constitution" -> {
+                var constitution_modifier = 0
+                if (current_character?.character_constitution == "") {
+                    constitution_modifier = 0
+                } else constitution_modifier =
+                    (current_character?.character_constitution?.toInt()?.minus(10)?.div(2)) ?: 0
+                modifier = constitution_modifier
+            }
+
+            character_characteristic == "intelligence" -> {
+                var intelligence_modifier = 0
+                if (current_character?.character_intelligence == "") {
+                    intelligence_modifier = 0
+                } else intelligence_modifier =
+                    (current_character?.character_intelligence?.toInt()?.minus(10)?.div(2)) ?: 0
+                modifier = intelligence_modifier
+            }
+
+            character_characteristic == "wisdom" -> {
+                var wisdom_modifier = 0
+                if (current_character?.character_wisdom == "") {
+                    wisdom_modifier = 0
+                } else {wisdom_modifier =
+                    (current_character?.character_wisdom?.toInt()?.minus(10)?.div(2)) ?: 0}
+                modifier = wisdom_modifier
+            }
+
+            character_characteristic == "charisma" -> {
+                var charisma_modifier = 0
+                if (current_character?.character_charisma == "") {
+                    charisma_modifier = 0
+                } else charisma_modifier =
+                    (current_character?.character_charisma?.toInt()?.minus(10)?.div(2)) ?: 0
+                modifier = charisma_modifier
+            }
+        }
+        return modifier
     }
 
 

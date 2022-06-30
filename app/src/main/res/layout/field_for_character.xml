@@ -18,7 +18,7 @@
         <TextView
             android:id="@+id/id_character"
             android:layout_width="0dp"
-            app:layout_constraintHorizontal_weight="0.2"
+            app:layout_constraintHorizontal_weight="0.1"
             android:layout_height="50dp"
             app:layout_constraintEnd_toStartOf="@id/character_name"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,13 +43,13 @@
             android:id="@+id/character_level"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            app:layout_constraintHorizontal_weight="0.2"
+            app:layout_constraintHorizontal_weight="0.3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/character_name"
             app:layout_constraintTop_toTopOf="parent"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="@dimen/textview_font3" />
+            android:textSize="@dimen/textview_font2" />
 
 
 
