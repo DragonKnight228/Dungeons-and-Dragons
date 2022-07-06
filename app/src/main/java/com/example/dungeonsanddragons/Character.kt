@@ -107,6 +107,25 @@ class Character : AppCompatActivity() {
                         saving_character.character_intelligence = bind_from_fragment.intelligenceField.characteristicInputText.text.toString()
                         saving_character.character_wisdom = bind_from_fragment.wisdomField.characteristicInputText.text.toString()
                         saving_character.character_charisma = bind_from_fragment.charismaField.characteristicInputText.text.toString()
+
+                        saving_character.athletic = bind_from_fragment.athleticField.abilityField.isChecked
+                        saving_character.acrobatic = bind_from_fragment.acrobaticField.abilityField.isChecked
+                        saving_character.handDexterity = bind_from_fragment.handDexterityField.abilityField.isChecked
+                        saving_character.steals = bind_from_fragment.stealsField.abilityField .isChecked
+                        saving_character.magic = bind_from_fragment.magicField.abilityField.isChecked
+                        saving_character.history = bind_from_fragment.historyField.abilityField.isChecked
+                        saving_character.investigation = bind_from_fragment.investigationField.abilityField.isChecked
+                        saving_character.religion = bind_from_fragment.religionField.abilityField.isChecked
+                        saving_character.insight = bind_from_fragment.insightField.abilityField.isChecked
+                        saving_character.medicine = bind_from_fragment.medicineField.abilityField.isChecked
+                        saving_character.nature = bind_from_fragment.natureField.abilityField.isChecked
+                        saving_character.perception = bind_from_fragment.perceptionField.abilityField.isChecked
+                        saving_character.survival = bind_from_fragment.survivalField.abilityField.isChecked
+                        saving_character.animals = bind_from_fragment.animalsField.abilityField.isChecked
+                        saving_character.deception = bind_from_fragment.deceptionField.abilityField.isChecked
+                        saving_character.fear = bind_from_fragment.fearField.abilityField.isChecked
+                        saving_character.performance = bind_from_fragment.performanceField.abilityField.isChecked
+                        saving_character.belief = bind_from_fragment.beliefField.abilityField.isChecked
                     }
                 }
                 finish()
