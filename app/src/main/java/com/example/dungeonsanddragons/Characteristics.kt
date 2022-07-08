@@ -49,7 +49,7 @@ class Characteristics: Fragment() {
         val binding = FragmentCharacteristicsBinding.inflate(inflater, container, false)
         bind_object = binding
         val character_activity = activity as Character
-        character_activity.bind_from_fragment = binding
+        character_activity.bind_from_fragment_characteristics = binding
 
         current_character_id = (activity?.intent?.extras?.getInt("character_id") ?: context?.let { Realm.init(it) }) as Int
         configuration = RealmConfiguration.Builder().name("Characters database").deleteRealmIfMigrationNeeded().allowWritesOnUiThread(true).build()
@@ -145,13 +145,6 @@ class Characteristics: Fragment() {
             bind_object.fieldRace.inputText.setText(current_character?.character_race)
             bind_object.fieldXp.inputText.setText(current_character?.character_xp)
 
-            bind_object.kdField.inputText1.setText(current_character?.character_kd)
-            bind_object.hpField.inputText1.setText(current_character?.character_hits)
-            bind_object.hpDiceField.inputText1.setText(current_character?.character_kh)
-            bind_object.speedField.inputText1.setText(current_character?.character_speed)
-            bind_object.maxHpField.inputText1.setText(current_character?.character_max_hits)
-            bind_object.initiativeField.inputText1.setText(current_character?.character_initiative)
-
             bind_object.strengthField.characteristicInputText.setText(current_character?.character_strength)
             val strength_modifier = getModifier(current_character, "strengh")
             bind_object.strengthField.characteristicModifier.text = strength_modifier.toString()
@@ -236,23 +229,6 @@ class Characteristics: Fragment() {
         binding.fieldRace.name.text = getString(R.string.race)
         binding.fieldXp.name.text = getString(R.string.xp)
 
-        binding.kdField.fullFieldComponent.setBackgroundResource(R.drawable.shield)
-        binding.kdField.name1.text = getString(R.string.KD)
-
-        binding.hpField.fullFieldComponent.setBackgroundResource(R.drawable.heart)
-        binding.hpField.name1.text = getString(R.string.HP)
-
-        binding.hpDiceField.fullFieldComponent.setBackgroundResource(R.drawable.hexagon)
-        binding.hpDiceField.name1.text = getString(R.string.hp_dice)
-
-        binding.speedField.name1.text = getString(R.string.speed)
-        binding.speedField.name1.textSize = resources.getDimension(R.dimen.alternative_font_size)
-
-        binding.maxHpField.name1.text = getString(R.string.max_hp)
-        binding.maxHpField.name1.textSize = resources.getDimension(R.dimen.alternative_font_size)
-
-        binding.initiativeField.name1.text = getString(R.string.initiative)
-        binding.initiativeField.name1.textSize = resources.getDimension(R.dimen.alternative_font_size)
 
         binding.strengthField.nameForCharacteristic.text = getString(R.string.strength)
 

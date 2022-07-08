@@ -8,17 +8,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
 import com.example.dungeonsanddragons.databinding.FragmentWeaponBinding
+import io.realm.Realm
+import io.realm.RealmConfiguration
+import io.realm.kotlin.where
 import java.text.FieldPosition
 
 
 class Weapon : Fragment() {
+
+
+    lateinit var ourRealm: Realm
+    lateinit var configuration: RealmConfiguration
+    var current_character: DatabaseCharacter? = DatabaseCharacter()
+    private var current_character_id = 1
+    lateinit var bind_object: FragmentWeaponBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val binding = FragmentWeaponBinding.inflate(inflater, container, false)
+
+        bind_object = binding
+        val character_activity = activity as Character
+        character_activity.bind_from_fragment_weapon = binding
+
+        current_character_id = (activity?.intent?.extras?.getInt("character_id") ?: context?.let { Realm.init(it) }) as Int
+        configuration = RealmConfiguration.Builder().name("Characters database").deleteRealmIfMigrationNeeded().allowWritesOnUiThread(true).build()
+        ourRealm = Realm.getInstance(configuration)
+        current_character = ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
 
         binding.kdField.fullFieldComponent.setBackgroundResource(R.drawable.shield)
         binding.kdField.name1.text = getString(R.string.KD)
@@ -49,25 +69,16 @@ class Weapon : Fragment() {
         return binding.root
     }
 
-}
-
-class CustomRecyclerViewAdapter(){
-    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var weapon_name = itemView.findViewById<TextView>(R.id.weapon_name)
-        var damage = itemView.findViewById<TextView>(R.id.damage)
-        var bonus = itemView.findViewById<TextView>(R.id.bonus)
+    override fun onResume(){
+        super.onResume()
+        ourRealm.executeTransaction {
+            bind_object.kdField.inputText1.setText(current_character?.character_kd)
+            bind_object.hpField.inputText1.setText(current_character?.character_hits)
+            bind_object.hpDiceField.inputText1.setText(current_character?.character_kh)
+            bind_object.speedField.inputText1.setText(current_character?.character_speed)
+            bind_object.maxHpField.inputText1.setText(current_character?.character_max_hits)
+            bind_object.initiativeField.inputText1.setText(current_character?.character_initiative)
+        }
     }
 
-    fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder{
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.weapon_field, parent, false)
-        return CustomViewHolder(itemView)
-    }
-
-    fun onBindViewHolder(holder: CustomViewHolder, position: FieldPosition){
-        holder.weapon_name.text = "Пупа"
-    }
-
-    fun getItemCount(): Int {
-        TODO()
-    }
 }

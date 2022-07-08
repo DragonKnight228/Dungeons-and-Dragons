@@ -46,3 +46,11 @@ open class DatabaseCharacter: RealmObject() {
     var performance: Boolean = false
     var belief: Boolean = false
 }
+
+open class CharacterWeapon: RealmObject(){
+    @PrimaryKey
+    var weapon_name: String = ""
+
+    var weapon_damage: String = ""
+    var weapon_bonus: String = ""
+}

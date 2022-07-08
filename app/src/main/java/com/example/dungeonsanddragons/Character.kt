@@ -16,9 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import androidx.fragment.app.findFragment
 import androidx.viewpager.widget.PagerAdapter
-import com.example.dungeonsanddragons.databinding.ActivityCharacterBinding
-import com.example.dungeonsanddragons.databinding.FragmentCharacteristicsBinding
-import com.example.dungeonsanddragons.databinding.FragmentEquipmentBinding
+import com.example.dungeonsanddragons.databinding.*
 import io.realm.*
 import io.realm.kotlin.where
 
@@ -32,7 +30,10 @@ class Character : AppCompatActivity() {
     lateinit var pager: ViewPager
     lateinit var pagerAdapter: Character.SectionsPagerAdapter
     lateinit var binding: ActivityCharacterBinding
-    lateinit var bind_from_fragment: FragmentCharacteristicsBinding
+    lateinit var bind_from_fragment_characteristics: FragmentCharacteristicsBinding
+    lateinit var bind_from_fragment_weapon: FragmentWeaponBinding
+    lateinit var bind_from_fragment_equipment: FragmentEquipmentBinding
+    lateinit var bind_from_fragment_magic: FragmentMagicBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,44 +89,45 @@ class Character : AppCompatActivity() {
                 val saving_character: DatabaseCharacter? = ourRealm.where<DatabaseCharacter>().equalTo("character_id", current_character_id).findFirst()
                 ourRealm.executeTransaction {
                     if (saving_character != null) {
-                        saving_character.character_name = bind_from_fragment.fieldName.inputText.text.toString()
-                        saving_character.character_level = bind_from_fragment.fieldLevel.inputText.text.toString()
-                        saving_character.character_race = bind_from_fragment.fieldRace.inputText.text.toString()
-                        saving_character.character_xp = bind_from_fragment.fieldXp.inputText.text.toString()
-
-                        saving_character.character_kd = bind_from_fragment.kdField.inputText1.text.toString()
-                        saving_character.character_hits = bind_from_fragment.hpField.inputText1.text.toString()
-                        saving_character.character_kh = bind_from_fragment.hpDiceField.inputText1.text.toString()
-                        saving_character.character_speed = bind_from_fragment.speedField.inputText1.text.toString()
-                        saving_character.character_max_hits = bind_from_fragment.maxHpField.inputText1.text.toString()
-                        saving_character.character_initiative = bind_from_fragment.initiativeField.inputText1.text.toString()
+                        saving_character.character_name = bind_from_fragment_characteristics.fieldName.inputText.text.toString()
+                        saving_character.character_level = bind_from_fragment_characteristics.fieldLevel.inputText.text.toString()
+                        saving_character.character_race = bind_from_fragment_characteristics.fieldRace.inputText.text.toString()
+                        saving_character.character_xp = bind_from_fragment_characteristics.fieldXp.inputText.text.toString()
 
 
-                        saving_character.character_strength = bind_from_fragment.strengthField.characteristicInputText.text.toString()
-                        saving_character.character_dexterity = bind_from_fragment.dexterityField.characteristicInputText.text.toString()
-                        saving_character.character_constitution = bind_from_fragment.constitutionField.characteristicInputText.text.toString()
-                        saving_character.character_intelligence = bind_from_fragment.intelligenceField.characteristicInputText.text.toString()
-                        saving_character.character_wisdom = bind_from_fragment.wisdomField.characteristicInputText.text.toString()
-                        saving_character.character_charisma = bind_from_fragment.charismaField.characteristicInputText.text.toString()
+                        saving_character.character_kd = bind_from_fragment_weapon.kdField.inputText1.text.toString()
+                        saving_character.character_hits = bind_from_fragment_weapon.hpField.inputText1.text.toString()
+                        saving_character.character_kh = bind_from_fragment_weapon.hpDiceField.inputText1.text.toString()
+                        saving_character.character_speed = bind_from_fragment_weapon.speedField.inputText1.text.toString()
+                        saving_character.character_max_hits = bind_from_fragment_weapon.maxHpField.inputText1.text.toString()
+                        saving_character.character_initiative = bind_from_fragment_weapon.initiativeField.inputText1.text.toString()
 
-                        saving_character.athletic = bind_from_fragment.athleticField.abilityField.isChecked
-                        saving_character.acrobatic = bind_from_fragment.acrobaticField.abilityField.isChecked
-                        saving_character.handDexterity = bind_from_fragment.handDexterityField.abilityField.isChecked
-                        saving_character.steals = bind_from_fragment.stealsField.abilityField .isChecked
-                        saving_character.magic = bind_from_fragment.magicField.abilityField.isChecked
-                        saving_character.history = bind_from_fragment.historyField.abilityField.isChecked
-                        saving_character.investigation = bind_from_fragment.investigationField.abilityField.isChecked
-                        saving_character.religion = bind_from_fragment.religionField.abilityField.isChecked
-                        saving_character.insight = bind_from_fragment.insightField.abilityField.isChecked
-                        saving_character.medicine = bind_from_fragment.medicineField.abilityField.isChecked
-                        saving_character.nature = bind_from_fragment.natureField.abilityField.isChecked
-                        saving_character.perception = bind_from_fragment.perceptionField.abilityField.isChecked
-                        saving_character.survival = bind_from_fragment.survivalField.abilityField.isChecked
-                        saving_character.animals = bind_from_fragment.animalsField.abilityField.isChecked
-                        saving_character.deception = bind_from_fragment.deceptionField.abilityField.isChecked
-                        saving_character.fear = bind_from_fragment.fearField.abilityField.isChecked
-                        saving_character.performance = bind_from_fragment.performanceField.abilityField.isChecked
-                        saving_character.belief = bind_from_fragment.beliefField.abilityField.isChecked
+
+                        saving_character.character_strength = bind_from_fragment_characteristics.strengthField.characteristicInputText.text.toString()
+                        saving_character.character_dexterity = bind_from_fragment_characteristics.dexterityField.characteristicInputText.text.toString()
+                        saving_character.character_constitution = bind_from_fragment_characteristics.constitutionField.characteristicInputText.text.toString()
+                        saving_character.character_intelligence = bind_from_fragment_characteristics.intelligenceField.characteristicInputText.text.toString()
+                        saving_character.character_wisdom = bind_from_fragment_characteristics.wisdomField.characteristicInputText.text.toString()
+                        saving_character.character_charisma = bind_from_fragment_characteristics.charismaField.characteristicInputText.text.toString()
+
+                        saving_character.athletic = bind_from_fragment_characteristics.athleticField.abilityField.isChecked
+                        saving_character.acrobatic = bind_from_fragment_characteristics.acrobaticField.abilityField.isChecked
+                        saving_character.handDexterity = bind_from_fragment_characteristics.handDexterityField.abilityField.isChecked
+                        saving_character.steals = bind_from_fragment_characteristics.stealsField.abilityField .isChecked
+                        saving_character.magic = bind_from_fragment_characteristics.magicField.abilityField.isChecked
+                        saving_character.history = bind_from_fragment_characteristics.historyField.abilityField.isChecked
+                        saving_character.investigation = bind_from_fragment_characteristics.investigationField.abilityField.isChecked
+                        saving_character.religion = bind_from_fragment_characteristics.religionField.abilityField.isChecked
+                        saving_character.insight = bind_from_fragment_characteristics.insightField.abilityField.isChecked
+                        saving_character.medicine = bind_from_fragment_characteristics.medicineField.abilityField.isChecked
+                        saving_character.nature = bind_from_fragment_characteristics.natureField.abilityField.isChecked
+                        saving_character.perception = bind_from_fragment_characteristics.perceptionField.abilityField.isChecked
+                        saving_character.survival = bind_from_fragment_characteristics.survivalField.abilityField.isChecked
+                        saving_character.animals = bind_from_fragment_characteristics.animalsField.abilityField.isChecked
+                        saving_character.deception = bind_from_fragment_characteristics.deceptionField.abilityField.isChecked
+                        saving_character.fear = bind_from_fragment_characteristics.fearField.abilityField.isChecked
+                        saving_character.performance = bind_from_fragment_characteristics.performanceField.abilityField.isChecked
+                        saving_character.belief = bind_from_fragment_characteristics.beliefField.abilityField.isChecked
                     }
                 }
                 finish()

@@ -7,12 +7,12 @@
 
     <FrameLayout
         android:id="@+id/parent_characteristic"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="205sp">
 
         <RelativeLayout
             android:id="@+id/full_characteristic_component"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/shape_for_characteristics">

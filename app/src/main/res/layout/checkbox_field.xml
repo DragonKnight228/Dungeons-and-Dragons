@@ -7,8 +7,8 @@
 
     <CheckBox
         android:id="@+id/ability_field"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="5sp"
         android:background="@drawable/shape_for_field"
         android:textColor="@color/black"
