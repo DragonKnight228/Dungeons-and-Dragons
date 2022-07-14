@@ -1,14 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Equipment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+    <EditText
+        android:id="@+id/equipment_edit_text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="start"
+        android:autofillHints=""
+        android:inputType="textMultiLine"
+        android:lines="15"
+        />
+
+        <LinearLayout
+            android:id="@+id/money_fields"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="0.2"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/equipment_edit_text1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/equipment_edit_text2"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/mm_money"
+                layout="@layout/money_field"/>
+
+            <include
+                android:id="@+id/sm_money"
+                layout="@layout/money_field"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="2sp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/edittext_font"/>
+
+            <include
+                android:id="@+id/em_money"
+                layout="@layout/money_field"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="2sp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/edittext_font"/>
+
+            <include
+                android:id="@+id/zm_money"
+                layout="@layout/money_field"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="2sp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/edittext_font"/>
+
+            <include
+                android:id="@+id/pm_money"
+                layout="@layout/money_field"
+                android:layout_marginTop="10sp"
+                android:layout_marginStart="2sp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/edittext_font"/>
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/equipment_edit_text2"
+            android:layout_width="0dp"
+            app:layout_constraintHorizontal_weight="0.8"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="textMultiLine"
+            android:lines="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/money_fields"
+            app:layout_constraintTop_toBottomOf="@id/equipment_edit_text1" />
+
+        <EditText
+            android:id="@+id/equipment_edit_text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/equipment_edit_text2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:autofillHints=""
+            android:inputType="textMultiLine"
+            android:lines="8"
+            />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,14 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Characteristics">
+    android:layout_width="match_parent"
+    android:fillViewport="false"
+    android:scrollbars="vertical"
+    android:scrollbarSize="0dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/character_name" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/characteristic_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".Characteristics">
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="294sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/field_name"
+                layout="@layout/field_with_textview1" />
+
+            <include
+                android:id="@+id/field_level"
+                layout="@layout/field_with_textview1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
+            <include
+                android:id="@+id/field_race"
+                layout="@layout/field_with_textview1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
+            <include
+                android:id="@+id/field_xp"
+                layout="@layout/field_with_textview1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/activity_horizontal_margin" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:layout_marginStart="5sp"
+            android:layout_marginBottom="10sp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <include
+                android:id="@+id/strength_field"
+                layout="@layout/characteristic_field"
+                android:layout_height="205sp"
+                android:layout_width="match_parent"/>
+
+            <include
+                android:id="@+id/dexterity_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+
+            <include
+                android:id="@+id/constitution_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+
+            <include
+                android:id="@+id/intelligence_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+
+            <include
+                android:id="@+id/wisdom_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+
+            <include
+                android:id="@+id/charisma_field"
+                layout="@layout/characteristic_field"
+                android:layout_marginTop="40sp"
+                android:layout_marginBottom="40sp"
+                android:layout_height="205sp"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginEnd="30sp"
+            app:layout_constraintStart_toEndOf="@id/linearLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            android:orientation="vertical">
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/athletic_field"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/acrobatic_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/hand_dexterity_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/steals_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/magic_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/history_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/investigation_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/religion_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/insight_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/medicine_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/nature_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/perception_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/survival_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/animals_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/deception_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/fear_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/performance_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+            <include layout="@layout/checkbox_field"
+                android:id="@+id/belief_field"
+                android:layout_marginTop="30sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "464266089105",
+    "project_id": "dungeonsanddragons-96244",
+    "storage_bucket": "dungeonsanddragons-96244.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464266089105:android:277a375fedfe23d4d2a530",
+        "android_client_info": {
+          "package_name": "com.example.dungeonsanddragons"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464266089105-ch7u8kb98lm99jo8j6hdm80spiunmmb2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVm25c1sOtwOE0KDlmoJ4el6hXG1ThUpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464266089105-ch7u8kb98lm99jo8j6hdm80spiunmmb2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
